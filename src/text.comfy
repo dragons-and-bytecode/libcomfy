@@ -1,0 +1,50 @@
+/**
+ * @file
+ * Comfy Text defines a way to interact with text-baring strings.
+ *
+ * The text module relies on a string representation called Text, that knows
+ * the length of the string. A pointer to a ```Text``` variable can be created,
+ * using ```text_new(const char* str, int len)```.
+ *
+ * Remember to release any unused texts using ```text_destroy(Text* txt)```
+ * when you're done with it.
+ *
+ */
+
+#include <string.h>
+#include <stdlib.h>
+
+#include "syntax.h"
+
+§ struct _Text;
+§ typedef struct _Text Text;
+struct _Text {
+    char* str;
+    int len;
+};
+
+/**
+ * Creates a new Text object, with the given string and length.
+ *
+ * @param  str    The string inside the text
+ * @param  length The length of the char* pointer to consider.
+ * @return        a new Texxt pointer.
+ */
+public Text* text_new(const char* str, int length)
+{
+    Text* self = new(Text);
+    self->len = length;
+
+    self->str = malloc((1 + self->len) * sizeof(char));
+    self->str[self->len] = '\0';
+
+    strncpy(self->str, str, self->len);
+
+    return self;
+}
+
+public void text_destroy(Text* self)
+{
+    if (self) delete(self->str);
+    delete(self);
+}
