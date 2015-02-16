@@ -8,7 +8,12 @@
 §#define and &&
 §#define or ||
 §#define not !
+§#define is ==
 §#define unless(x) if(!(x))
 §#define until(x) while(!(x))
 §#define new(x) malloc(sizeof(x))
 §#define delete(x) if (x) {free(x); x = NULL;}
+§#define true 1
+§#define false 0
+
+§typedef int bool;
