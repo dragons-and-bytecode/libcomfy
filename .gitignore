@@ -31,3 +31,4 @@
 # Build Artifacts
 
 include/*.h
+build/**

@@ -17,3 +17,5 @@
 §#define false 0
 
 §typedef int bool;
+
+int x;

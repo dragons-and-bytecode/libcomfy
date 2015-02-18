@@ -14,13 +14,14 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "syntax.h"
+#include "comfy.h"
 
 § struct _Text;
 § typedef struct _Text Text;
 struct _Text {
     char* str;
-    int len;
+    int len
+    ;
 };
 
 /**
