@@ -13,6 +13,9 @@
 
 #include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
+§#include <stdarg.h>
+
 
 #include "comfy.h"
 
@@ -42,6 +45,39 @@ public Text* text_new(const char* str, int length)
     strncpy(self->str, str, self->len);
 
     return self;
+}
+
+public Text* text_format_new(const char* format_str, ...)
+{
+
+    Text* self = new(Text);
+
+    va_list args;
+    va_start(args, format_str);
+    vasprintf(&self->str, format_str, args);
+    va_end(args);
+
+    self->len = strlen(self->str);
+
+    return self;
+}
+
+public char* text_make_c_str(Text* text)
+{
+    unless (text) return NULL;
+    char* cstr;
+    asprintf(&cstr, "%.*s", text->len, text->str);
+    return cstr;
+}
+
+public int text_length(Text* self)
+{
+    return self->len;
+}
+
+public char* text_stringvalue(Text* self)
+{
+    return self->str;
 }
 
 public void text_destroy(Text* self)

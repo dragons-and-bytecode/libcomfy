@@ -6,7 +6,7 @@
 §#define DEBUG(txt, ...) printf("\x1b[36m" "[DEBUG] " txt "\n" "\x1b[0m", __VA_ARGS__)
 §#define INFO(txt, ...) printf("\x1B[32m" txt "\n" "\x1b[0m", __VA_ARGS__)
 
-§#define ERROR(txt, ...) printf("\x1b[31m" "[ERROR] " txt "\n" "\x1b[0m", __VA_ARGS__)
+§#define ERROR(txt, ...) printf("\x1b[31m" "[ERROR] " txt "\n" "\x1b[0m", ##__VA_ARGS__)
 
 int bar = 3;
 
@@ -14,3 +14,11 @@ public void log_info(const char* txt)
 {
     printf("%s---\n", txt);
 }
+
+§ /**
+§  * Makro for easier copying of a string to an ininitialized variable.
+§  */
+§ #define astrcpy(target, source) {int __length = strlen(source); \
+§                                  target = malloc(__length) + 1;\
+§                                  target[__length] = '\0';\
+§                                  strcpy(target, source);}

@@ -1,6 +1,7 @@
 /**
  * Syntactic shugar stuff.
  */
+§#include <stdlib.h>
 
 §#ifndef NULL
 §#define NULL 0
